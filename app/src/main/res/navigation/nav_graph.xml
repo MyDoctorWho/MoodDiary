@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <!-- 主页 -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mooddiary.ui.screens.home.HomeFragment"
+        android:label="心情日记"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="date"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- 日历页面 -->
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.mooddiary.ui.screens.calendar.CalendarFragment"
+        android:label="日历"
+        tools:layout="@layout/fragment_calendar">
+        <action
+            android:id="@+id/action_calendarFragment_to_detailFragment"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="date"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_calendarFragment_to_editFragment"
+            app:destination="@id/editFragment">
+            <argument
+                android:name="date"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- 统计页面 -->
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="com.example.mooddiary.ui.screens.statistics.StatisticsFragment"
+        android:label="统计"
+        tools:layout="@layout/fragment_statistics" />
+
+    <!-- 详情页面 -->
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.mooddiary.ui.screens.detail.DetailFragment"
+        android:label="详情"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailFragment_to_editFragment"
+            app:destination="@id/editFragment">
+            <argument
+                android:name="date"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <!-- 编辑页面 -->
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.mooddiary.ui.screens.edit.EditFragment"
+        android:label="编辑"
+        tools:layout="@layout/fragment_edit">
+        <argument
+            android:name="date"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
